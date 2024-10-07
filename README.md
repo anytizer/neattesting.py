@@ -6,6 +6,7 @@ For now, it is the documentation for this.
 
 * All test cases need to return boolean flag to mention if the logic passed successfully.
 * It loads entire test suites.
+* Decision making methods must return a boolean (True or False) values.
 * This is not the unit test mechanism.
 
 ## Usage example 1
@@ -37,7 +38,7 @@ class MathematicalTests(BusinessLogic):
         return expected_sum == actual_sum
 ```
 
-Perform the tests like:
+The method should return a boolean decision. Perform the tests like:
 ```
 from neattesting import TestPerformer
 from cases import MathematicalTests
