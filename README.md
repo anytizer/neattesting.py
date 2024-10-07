@@ -1,5 +1,5 @@
 # neattesting.py
-This repository will host public repository of **neattesting** tool in order to accept contributions.
+This repository will hos the public source of **neattesting** tool in order to accept contributions.
 For now, it is the documentation for this.
 
 ## Considetaions
@@ -7,6 +7,8 @@ For now, it is the documentation for this.
 * All test cases need to return boolean flag to mention if the logic passed successfully.
 * It loads entire test suites.
 * Decision making methods must return a boolean (True or False) values.
+* These methods cannot accept parameters.
+* These methods must import their own libraries.
 * This is not the unit test mechanism.
 
 ## Usage example 1
