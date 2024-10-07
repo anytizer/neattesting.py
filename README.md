@@ -2,6 +2,12 @@
 This repository will host public repository of **neattesting** tool in order to accept contributions.
 For now, it is the documentation for this.
 
+## Considetaions
+
+* All test cases need to return boolean flag to mention if the logic passed successfully.
+* It loads entire test suites.
+* This is not the unit test mechanism.
+
 ## Usage example 1
 
 ```
@@ -15,7 +21,8 @@ if __name__ == "__main__":
     tp.perform(BusinessLogicTests(), True)
 ```
 
-In this example, `BusinessLogcTests` is a test suite which contains test_* methods.
+In this example, `BusinessLogcTests` is a test suite which contains test_* methods, each returning boolean flags.
+One example of `BusinessLogcTests` is `MathematicalTests` below as:
 
 ```
 from business import BusinessLogic
@@ -40,4 +47,10 @@ transparency = True
 
 tp = TestPerformer()
 tp.perform(testhost, transparency)
+```
+The test engine will look for test_* methods, and perform the call.
+Expected output is something simlar to:
+
+```
+[ v ] Summation
 ```
