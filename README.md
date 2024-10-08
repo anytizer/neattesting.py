@@ -36,8 +36,15 @@ One example of `BusinessLogcTests` is `MathematicalTests` below as:
 
 ```
 from business import BusinessLogic
+from business import Calculator
+
 
 class MathematicalTests(BusinessLogic):
+
+    calculator = None
+
+    def __init__(self):
+        self.calculator = Calculator()
 
     def test_summation(self) -> bool:
         a: int = 1
@@ -45,6 +52,9 @@ class MathematicalTests(BusinessLogic):
         expected_sum: int = 3
         actual_sum = a + b
         return expected_sum == actual_sum
+
+    def test_use_calculator_to_subtract_integers(self) -> bool:
+        return 100 == self.calculator.integers_difference(222, 122)
 ```
 
 The method should return a boolean decision. Perform the tests like:
@@ -63,6 +73,7 @@ Expected output is something simlar to:
 
 ```
 [ v ] Summation
+[ v ] Use Calculator To Subtract Integers
 ```
 
 ## Usage Example 2: Individual Selection Mode
