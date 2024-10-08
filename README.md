@@ -6,12 +6,13 @@ For now, it is the documentation for this.
 
 ## Considetaions
 
-* All test cases need to return boolean flag to mention if the logic passed successfully.
 * It loads entire test suites.
-* Decision making methods must return a boolean (True or False) values.
 * These methods cannot accept parameters.
-* These methods must import their own libraries, themselves.
-* This is NOT the unit test mechanism.
+* Decision making methods must return a boolean (True or False) values.
+* These methods must import their own libraries, themselves, and be operable in isolation.
+* This is NOT the unit testing mechanism; no true assetions.
+
+The alternative is to use a proper unit testing application / software.
 
 ## Usage Example 1: Registry Mode
 
@@ -26,6 +27,7 @@ if __name__ == "__main__":
 
     tp.perform(BusinessLogicTests(), True)
     tp.perform(MathematicalTests(), True)
+    # ...
 ```
 
 In this example, `BusinessLogcTests` is a test suite which contains test_* methods, each returning boolean flags.
@@ -64,7 +66,8 @@ Expected output is something simlar to:
 
 ## Usage Example 2: Individual Selection Mode
 
-You pickup a specific file to run. The scanner will look for all available **test_** methods.
+You can define a specific file to run.
+The scanner will look for all available **test_** methods in it.
 
 ```
 from neattesting_kafal import TestIndividual
