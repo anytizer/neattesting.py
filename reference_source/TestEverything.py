@@ -1,23 +1,21 @@
 import os
 import sys
 from glob import glob
+from importlib import import_module
 
-from .TestPerformer import TestPerformer
+from .TestPerformer import TestPerformer, _module_name_from_file_name
 
 __all__ = ["TestEverything"]
 
 class TestEverything(TestPerformer):
 
-    def everything(self, cases_dir="cases/"):
+    def perform(self, cases_dir="cases/"):
         if os.path.basename(cases_dir) == "cases":
             # @todo use case_dir
 
             for py in glob("./cases/*.py") + glob("./cases/*/*.py"):  # *.py, */*.py
                 if os.path.basename(py) not in [".", "..", "__init__.py"]:
-
-                    py = py.replace(".py", "").replace("\\", "/").replace("/", ".")
-
-                    module = __import__(py, fromlist=["*"])
+                    module = import_module(_module_name_from_file_name(py))
                     classes = [
                         getattr(module, x)
                         for x in dir(module)
@@ -29,7 +27,4 @@ class TestEverything(TestPerformer):
                         processor = getattr(sys.modules[__name__], cls.__name__)()
                         if str(processor).startswith("<cases."):
                             transparency = True
-                            passed, total = self.perform(processor, transparency)
-                            print(
-                                f"====( {passed}/{total} )==== in \033[0;33m{processor}\033[0m"
-                            )
+                            passed, total, cls = super().perform(processor, transparency)

@@ -2,7 +2,7 @@ import sys, os
 
 from .TestingEngine import TestingEngine
 
-__all__ = ["TestPerformer"]
+__all__ = ["TestPerformer", "_module_name_from_file_name"]
 
 # Remove test_ prefix and capitalize remaining words
 def _decorated_name(name):
@@ -32,7 +32,16 @@ def _operate(container: TestingEngine, method, transparency) -> bool:
     return output == True
 
 
-class TestPerformer:
+# @todo Convert case file into module name
+# Importing: ./cases\nested\logic2\Logic2.py
+# convert to: cases.nested.logic2.Logic2
+# remove slashes and empty ones
+def _module_name_from_file_name(path: str) -> str:
+    path = ".".join(list(filter(None, path.replace(".py", "").replace("\\", "/").replace("/", ".").split("."))))
+    return path
+
+
+class TestPerformer():
     _success = "\033[1;32m[ v ]\033[0m"
     _failure = "\033[1;31m[ x ]\033[0m"
 
@@ -44,13 +53,15 @@ class TestPerformer:
         ]
         # passed: How many tests executed truthy result?
         # total: Total number of test_* methods available with the container
-        passed = 0
+        passed: int = 0
         total: int = len(methods_list)
+        cls = container.__class__
         for method in methods_list:
             status = self._failure
             output = _operate(container, method, transparency)
             if output:
                 status = self._success
                 passed += 1
-            print(status, _decorated_name(method))
-        return passed, total
+            print(f"{status} {_decorated_name(method)}")
+        print(f"\033[0;36m====( {passed}/{total} )==== \033[1;33m{cls}\033[0m\r\n")
+        return passed, total, cls
