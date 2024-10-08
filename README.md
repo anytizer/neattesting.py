@@ -31,7 +31,7 @@ if __name__ == "__main__":
     # ...
 ```
 
-In this example, `BusinessLogcTests` is a test suite which contains test_* methods, each returning boolean flags.
+In this example, `BusinessLogcTests` is a test suite which contains __test_*__ methods, each returning boolean flags.
 One example of `BusinessLogcTests` is `MathematicalTests` below as:
 
 ```
@@ -79,7 +79,7 @@ Expected output is something simlar to:
 ## Usage Example 2: Individual Selection Mode
 
 You can define a specific file to run.
-The scanner will look for all available **test_** methods in it.
+The scanner will look for all available __test_*__ methods in it.
 
 ```
 from neattesting_kafal import TestIndividual
@@ -105,8 +105,8 @@ if __name__ == "__main__":
     te.perform("./cases")
 ```
 
-* In this mode, you MUST remove the non-test classes from the **cases** folder.
-* Folder name MUST be **cases**, that holds the test classes.
+* In this mode, you MUST remove the non-test classes from the __cases__ folder.
+* Folder name MUST be __cases__, that holds the test classes.
 
 In all  modes of operations, you should design your test case in such a way
 that __repeating tests__ does not bother your application heavily. Like:
