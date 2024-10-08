@@ -1,6 +1,8 @@
 # neattesting.py
-This repository will hos the public source of **neattesting** tool in order to accept contributions.
+This repository will host the public source of **neattesting** tool in order to accept contributions.
 For now, it is the documentation for this.
+
+![test-output](extras/screenshot.png)
 
 ## Considetaions
 
@@ -8,8 +10,8 @@ For now, it is the documentation for this.
 * It loads entire test suites.
 * Decision making methods must return a boolean (True or False) values.
 * These methods cannot accept parameters.
-* These methods must import their own libraries.
-* This is not the unit test mechanism.
+* These methods must import their own libraries, themselves.
+* This is NOT the unit test mechanism.
 
 ## Usage example 1
 
@@ -57,5 +59,3 @@ Expected output is something simlar to:
 ```
 [ v ] Summation
 ```
-
-![test-output](extras/screenshot.png)
