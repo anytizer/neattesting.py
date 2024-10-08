@@ -13,7 +13,7 @@ For now, it is the documentation for this.
 * These methods must import their own libraries, themselves.
 * This is NOT the unit test mechanism.
 
-## Usage example 1
+## Usage Example 1: Registry Mode
 
 ```
 from neattesting import TestPerformer
@@ -59,3 +59,47 @@ Expected output is something simlar to:
 ```
 [ v ] Summation
 ```
+
+## Usage Example 2: Individual Selection Mode
+
+You pickup a specific file to run. The scanner will look for all available **test_** methods.
+
+```
+from neattesting_kafal import TestIndividual
+
+if __name__ == "__main__":
+    ti = TestIndividual()
+    ti.perform("./cases/APIPerformanceTests.py")
+    ti.perform("./cases/BusinessLogicTests.py")
+    ti.perform("./cases/MathematicalTests.py")
+    # ...
+```
+
+## Usage Example 3: Perform Everything
+
+You will define ./cases folder to scan for test classes.
+
+```
+from neattesting_kafal import TestEverything
+
+if __name__ == "__main__":
+    te = TestEverything()
+    te.perform("./cases")
+```
+
+* In this mode, you MUST remove the non-test classes from the **cases** folder.
+* Folder name MUST be **cases**, that holds the test classes.
+
+In all  modes of operations, you should design your test case in such a way
+that __repeating tests__ does not bother your application heavily. Like:
+
+* adding or deleting resources in the database
+* Fast and frequent API calls
+
+Finally,
+
+* Test case's constructor should be called once per test.
+* There are no setup() and teardown() like features.
+* The constructor in the test case does not accept any parameters.
+* The constructor will run once for a set of tests. So, you can reuse their public variables.
+* The cases may run in any order, by one thread only, in a sequencial manner.
