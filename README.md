@@ -19,11 +19,13 @@ For now, it is the documentation for this.
 from neattesting import TestPerformer
 
 from cases import BusinessLogicTests
+from cases import MathematicalTests
 
 if __name__ == "__main__":
     tp = TestPerformer()
 
     tp.perform(BusinessLogicTests(), True)
+    tp.perform(MathematicalTests(), True)
 ```
 
 In this example, `BusinessLogcTests` is a test suite which contains test_* methods, each returning boolean flags.
