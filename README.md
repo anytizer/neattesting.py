@@ -1,6 +1,5 @@
 # neattesting.py | reference
 This repository will host the public source of **neattesting** tool in order to accept contributions.
-For now, it is the documentation for this.
 
 ![test-output](extras/screenshot.png)
 
@@ -12,9 +11,11 @@ For now, it is the documentation for this.
 * These methods must import their own libraries, themselves, and be operable in isolation.
 * This is NOT the unit testing mechanism; no true assetions.
 
-The alternative is to use a proper unit testing application / software.
+The best alternative is to use a proper unit testing tool.
 
 ## Usage Example 1: Registry Mode
+
+You will give the object instances to run.
 
 ```
 from neattesting import TestPerformer
@@ -83,6 +84,7 @@ if __name__ == "__main__":
 ## Usage Example 3: Perform Everything
 
 You will define ./cases folder to scan for test classes.
+The ./cases folder should be aa relative path to the test test script.
 
 ```
 from neattesting_kafal import TestEverything
