@@ -57,3 +57,5 @@ Expected output is something simlar to:
 ```
 [ v ] Summation
 ```
+
+![test-output](extras/screenshot.png)
