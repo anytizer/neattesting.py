@@ -1,17 +1,19 @@
-# neattesting.py | reference
-This repository will host the public source of **neattesting** tool in order to accept contributions.
+# Neat Testing
 
-![test-output](extras/screenshot.png)
+**Fun fact**: The name is inspired by the term: "Unit Testing".
 
-## Considetaions
+Neat Testing (aka, this software) is a request to operate entire test suites at once.
+Output of a test method is treated as a boolean value, where:
 
-* It loads entire test suites.
-* These methods cannot accept parameters.
-* Decision making methods must return a boolean (True or False) values.
-* These methods must import their own libraries, themselves, and be operable in isolation.
-* This is NOT the unit testing mechanism; no true assetions.
+  - __True__ means a there were no errors while performing the tests
+  - __False__ means test failed due to logical error or exceptions in the program
 
-The best alternative is to use a proper unit testing tool.
+After each test executes, the status is updated on the console.
+
+## Test Transparency:
+This flag hides or shows the exeptions and print() functions.
+
+# == == == == == == == == == == ==
 
 ## Usage Example 1: Registry Mode
 
@@ -76,7 +78,7 @@ Expected output is something simlar to:
 [ v ] Use Calculator To Subtract Integers
 ```
 
-## Usage Example 2: Individual Selection Mode
+## Usage Example 2: Individual File Selection Mode
 
 You can define a specific file to run.
 The scanner will look for all available __test_*__ methods in it.
@@ -86,9 +88,9 @@ from neattesting_kafal import TestIndividual
 
 if __name__ == "__main__":
     ti = TestIndividual()
-    ti.perform("./cases/APIPerformanceTests.py")
-    ti.perform("./cases/BusinessLogicTests.py")
-    ti.perform("./cases/MathematicalTests.py")
+    ti.perform("./cases/APIPerformanceTests.py", True)
+    ti.perform("./cases/BusinessLogicTests.py", True)
+    ti.perform("./cases/MathematicalTests.py", True)
     # ...
 ```
 
@@ -102,17 +104,17 @@ from neattesting_kafal import TestEverything
 
 if __name__ == "__main__":
     te = TestEverything()
-    te.perform("./cases")
+    te.perform("./cases", True)
 ```
 
 * In this mode, you MUST remove the non-test classes from the __cases__ folder.
 * Folder name MUST be __cases__, that holds the test classes.
 
-In all  modes of operations, you should design your test case in such a way
-that __repeating tests__ does not bother your application heavily. Like:
+In all modes of operations, you should design your test case in such a way
+that __repeating tests__ do not bother your application heavily. Like:
 
-* adding or deleting resources in the database
 * Fast and frequent API calls
+* Massive data operations (eg. deletes)
 
 Finally,
 

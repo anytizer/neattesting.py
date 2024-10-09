@@ -4,7 +4,8 @@ from .TestingEngine import TestingEngine
 
 __all__ = ["TestPerformer", "_module_name_from_file_name"]
 
-# Remove test_ prefix and capitalize remaining words
+
+# Remove test_ prefix and capitalize the remaining words
 def _decorated_name(name):
     words = name.lower().split("_")
     words.pop(0)
@@ -12,9 +13,9 @@ def _decorated_name(name):
     return readable
 
 
-# method MUST NOT have parameters
+# Method MUST NOT have parameters
 # Method MUST start with "test_" prefix
-# Method MUST BE a boolean return type
+# Method MUST return a boolean value
 def _operate(container: TestingEngine, method, transparency) -> bool:
     output = False
     if transparency:
@@ -45,7 +46,7 @@ class TestPerformer():
     _success = "\033[1;32m[ v ]\033[0m"
     _failure = "\033[1;31m[ x ]\033[0m"
 
-    def perform(self, container: TestingEngine, transparency: bool) -> tuple[int, int]:
+    def perform(self, container: TestingEngine, transparency: bool) -> tuple[int, int, str]:
         methods_list = [
             method
             for method in dir(container)
