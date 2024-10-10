@@ -20,7 +20,7 @@ This flag hides or shows the exeptions and print() functions.
 You will give the object instances to run.
 
 ```
-from neattesting import TestPerformer
+from neattesting_kafal import TestPerformer
 
 from cases import BusinessLogicTests
 from cases import MathematicalTests
@@ -37,11 +37,10 @@ In this example, `BusinessLogcTests` is a test suite which contains __test_*__ m
 One example of `BusinessLogcTests` is `MathematicalTests` below as:
 
 ```
-from business import BusinessLogic
+from neattesting_kafal import TestingEngine
 from business import Calculator
 
-
-class MathematicalTests(BusinessLogic):
+class MathematicalTests(TestingEngine):
 
     calculator = None
 
@@ -61,7 +60,7 @@ class MathematicalTests(BusinessLogic):
 
 The method should return a boolean decision. Perform the tests like:
 ```
-from neattesting import TestPerformer
+from neattesting_kafal import TestPerformer
 from cases import MathematicalTests
 
 testhost = MathematicalTests()
